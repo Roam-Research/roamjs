@@ -93,21 +93,6 @@ window.watchBlocksForNewTags = () => {
         if (lastBlockId == blockId) {
           const tags = newTags(lastBlockStr, str);
           console.log(tags)
-          if (tags.length > 0) {
-            for (tag of tags) {
-             str = await handleTag(tag, str)
-            }
-            str = await styleMsg(str)
-            str = str + " " + `<${blockLink(blockId)}|🔗>`
-            let email = await window.roamAlphaAPI.q(`
-                                    [:find ?em
-									 :in $ ?u
-									 :where
-									 [?e :block/uid ?u]
-								     [?e :edit/email ?em]]`,
-                                   blockId)
-            return await postNotification(str, email);   
-          }
         }
       }
     }
