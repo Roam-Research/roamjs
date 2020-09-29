@@ -92,6 +92,7 @@ window.watchBlocksForNewTags = () => {
         // console.log("exit block", blockId, str)
         if (lastBlockId == blockId) {
           const tags = newTags(lastBlockStr, str);
+          console.log(tags)
           if (tags.length > 0) {
             for (tag of tags) {
              str = await handleTag(tag, str)
